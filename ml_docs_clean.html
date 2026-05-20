@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ML Docs - Machine Learning Guide</title>
+  <style>
+    :root { --bg:#0d1117;--surface:#161b22;--border:#30363d;--text:#c9d1d9;--text-muted:#8b949e;--accent:#58a6ff;--accent-subtle:#1f6feb22;--green:#3fb950;--sidebar-w:260px; }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
+    .sidebar{position:fixed;top:0;left:0;width:var(--sidebar-w);height:100vh;background:var(--surface);border-right:1px solid var(--border);padding:24px 16px;overflow-y:auto;z-index:10;}
+    .sidebar .logo{font-size:20px;font-weight:700;color:var(--accent);margin-bottom:6px;}
+    .sidebar .version{font-size:12px;color:var(--text-muted);margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--border);}
+    .sidebar nav a{display:flex;align-items:center;gap:8px;padding:8px 12px;margin-bottom:2px;border-radius:6px;color:var(--text-muted);text-decoration:none;font-size:14px;transition:all 0.15s;}
+    .sidebar nav a:hover{background:var(--accent-subtle);color:var(--text);}
+    .sidebar nav a.active{background:var(--accent-subtle);color:var(--accent);font-weight:600;}
+    .sidebar nav .section-label{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin:20px 0 8px 12px;font-weight:600;}
+    .main{margin-left:var(--sidebar-w);max-width:820px;padding:48px 48px 120px;}
+    .breadcrumb{font-size:13px;color:var(--text-muted);margin-bottom:24px;}
+    .breadcrumb a{color:var(--accent);text-decoration:none;}
+    h1{font-size:32px;font-weight:700;margin-bottom:8px;color:#f0f6fc;}
+    .subtitle{font-size:16px;color:var(--text-muted);margin-bottom:32px;}
+    h2{font-size:24px;font-weight:600;margin:48px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--border);color:#f0f6fc;}
+    h3{font-size:18px;font-weight:600;margin:32px 0 12px;color:#f0f6fc;}
+    p{margin-bottom:16px;}
+    a{color:var(--accent);}
+    pre{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:16px;overflow-x:auto;margin-bottom:16px;}
+    code{font-family:"SFMono-Regular",Consolas,monospace;font-size:13px;}
+    p code{background:var(--surface);padding:2px 6px;border-radius:4px;font-size:85%;border:1px solid var(--border);}
+    .callout{border-radius:6px;padding:16px;margin-bottom:16px;border:1px solid;}
+    .callout-info{background:#58a6ff10;border-color:#58a6ff44;}
+    .callout-warn{background:#d2992210;border-color:#d2992244;}
+    .callout-tip{background:#3fb95010;border-color:#3fb95044;}
+    .callout strong{display:block;margin-bottom:4px;}
+  </style>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="logo">&#9881; ML Docs</div>
+    <div class="version">v3.2 &mdash; Last updated Apr 2026</div>
+    <nav>
+      <div class="section-label">Getting Started</div>
+      <a href="#introduction" class="active">&#9658; Introduction</a>
+      <a href="#quickstart">&#9658; Quick Start</a>
+      <div class="section-label">Core Concepts</div>
+      <a href="#types">&#9658; Types of ML</a>
+      <a href="#pipeline">&#9658; ML Pipeline</a>
+      <a href="#algorithms">&#9658; Algorithms</a>
+      <div class="section-label">Practice</div>
+      <a href="#code-examples">&#9658; Code Examples</a>
+      <a href="#evaluation">&#9658; Model Evaluation</a>
+      <a href="#best-practices">&#9658; Best Practices</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <div class="breadcrumb">
+      <a href="#">Docs</a> / <a href="#">Machine Learning</a> / Introduction
+    </div>
+
+    <section id="introduction">
+      <h1>Machine Learning Documentation</h1>
+      <p class="subtitle">A practical guide to understanding and implementing machine learning systems.</p>
+
+      <div class="callout callout-info">
+        <strong>What is Machine Learning?</strong>
+        Machine Learning is a subset of artificial intelligence that enables systems to learn patterns
+        from data and improve their performance on tasks without being explicitly programmed for each scenario.
+      </div>
+
+      <p>ML has become the backbone of modern software &mdash; from recommendation engines and fraud
+      detection to medical imaging and autonomous vehicles. This documentation covers the fundamentals,
+      walks through practical code, and provides guidance for building production-ready ML systems.</p>
+
+      <h2>Core Concepts</h2>
+      <p>At its core, a machine learning system learns a mapping from inputs to outputs by optimizing
+      a set of parameters. The three pillars of any ML system are the data, the model architecture,
+      and the training objective.</p>
+
+      <h3>Supervised Learning</h3>
+      <p>The model learns from labeled examples. Given input features <code>X</code> and target labels
+      <code>y</code>, the model learns to predict <code>y</code> from <code>X</code>.</p>
+
+      <pre><code>from sklearn.linear_model import LogisticRegression
+model = LogisticRegression()
+model.fit(X_train, y_train)
+accuracy = model.score(X_test, y_test)</code></pre>
+
+      <h3>Unsupervised Learning</h3>
+      <p>The model finds structure in unlabeled data. Clustering, dimensionality reduction, and
+      generative modeling all fall under this category.</p>
+
+      <pre><code>from sklearn.cluster import KMeans
+kmeans = KMeans(n_clusters=3, random_state=42)
+clusters = kmeans.fit_predict(X)</code></pre>
+
+      <h3>Reinforcement Learning</h3>
+      <p>An agent learns to take actions in an environment to maximize a cumulative reward signal.
+      Common in robotics, game playing, and adaptive control systems.</p>
+
+      <h2>The ML Pipeline</h2>
+      <p>A production ML pipeline typically consists of several stages working in sequence:</p>
+
+      <ol style="margin-left:20px;margin-bottom:16px;">
+        <li><strong>Data ingestion</strong> &mdash; collecting raw signals from upstream sources.</li>
+        <li><strong>Feature engineering</strong> &mdash; transforming raw inputs into model-ready vectors.</li>
+        <li><strong>Training</strong> &mdash; fitting parameters via gradient descent or similar optimizers.</li>
+        <li><strong>Evaluation</strong> &mdash; measuring generalization on a held-out set.</li>
+        <li><strong>Deployment</strong> &mdash; serving predictions behind an API with monitoring.</li>
+      </ol>
+
+      <h2>Model Evaluation</h2>
+      <p>Common metrics depend on the task. For classification, prefer precision, recall, and F1
+      over raw accuracy when classes are imbalanced. For regression, report both RMSE and MAE so
+      readers can judge whether large errors dominate.</p>
+
+      <div class="callout callout-tip">
+        <strong>Getting started</strong>
+        Install with <code>pip install scikit-learn pandas numpy matplotlib</code> and follow the
+        Quick Start guide to train your first model in under 10 lines of code.
+      </div>
+
+      <h2>Best Practices</h2>
+      <p>Version both your data and your model artifacts. Always hold out a true test set that is
+      never touched during hyperparameter search. Track experiments with a registry such as MLflow
+      or Weights &amp; Biases so results stay reproducible across collaborators.</p>
+
+    </section>
+  </main>
+</body>
+</html>
